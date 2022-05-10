@@ -6,11 +6,25 @@ public class MenuItem {
     private String name;
     private String description;
     private double price;
+    private boolean isAvailable;
 
-    public MenuItem(int id, String name, String description, double price) {
+    public MenuItem(int id, String name, String description, double price, boolean isAvailable) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.price = price;
+        this.isAvailable = isAvailable;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public void setPrice(double price) {
         this.price = price;
     }
 
