@@ -2,21 +2,23 @@ package com.fezmlg.order;
 
 import com.fezmlg.menu.MenuItem;
 import com.fezmlg.utils.IDGenerator;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
+
 public class Order {
 
     public UUID id;
-    public int tableNumber;
+    public OrderType orderType;
+    public String address;
     public ArrayList<MenuItem> orderItems;
 
-    public Order(int tableNumber) {
+    public Order(OrderType orderType, String address) {
         this.id = new IDGenerator().getID();
-        this.tableNumber = tableNumber;
+        this.orderType = orderType;
+        this.address = address;
     }
 
     public void addToOrder(MenuItem... itemToAdd) {
