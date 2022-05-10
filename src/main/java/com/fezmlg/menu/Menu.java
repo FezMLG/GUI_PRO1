@@ -1,16 +1,13 @@
 package com.fezmlg.menu;
 
-import com.fezmlg.Logger;
+import com.fezmlg.utils.JSONSaver;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.function.Predicate;
 
 public class Menu {
 
-    private ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
+    private ArrayList<MenuItem> menuList = new ArrayList<>();
 
     public Menu(){}
 
@@ -30,5 +27,9 @@ public class Menu {
 
     public void setMenuList(ArrayList<MenuItem> menuList) {
         this.menuList = menuList;
+    }
+
+    public void save(){
+        new JSONSaver().saveToFile(menuList, "menu");
     }
 }

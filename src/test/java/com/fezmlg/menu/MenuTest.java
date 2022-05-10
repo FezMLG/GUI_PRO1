@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 class MenuTest {
@@ -12,7 +13,7 @@ class MenuTest {
     @DisplayName("should add item to menu and return array with items")
     void addToMenu() {
         Menu menu = new Menu();
-        ArrayList<MenuItem> list = new ArrayList<MenuItem>();
+        ArrayList<MenuItem> list = new ArrayList<>();
         MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
         list.add(item);
         Assertions.assertEquals(menu.addToMenu(item).getMenuList(), list);
@@ -21,7 +22,7 @@ class MenuTest {
     @Test
     void removeItem() {
         Menu menu = new Menu();
-        ArrayList<MenuItem> list = new ArrayList<MenuItem>();
+        ArrayList<MenuItem> list = new ArrayList<>();
         MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
         menu.addToMenu(item);
         menu.removeItem(item);
@@ -31,8 +32,16 @@ class MenuTest {
     @Test
     void canChangeAvailability() {
         MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
-        Assertions.assertEquals(item.isAvailable(), true);
+        Assertions.assertTrue(item.isAvailable());
         item.setAvailable(false);
-        Assertions.assertEquals(item.isAvailable(), false);
+        Assertions.assertFalse(item.isAvailable());
+    }
+
+    @Test
+    void creatingFileTest() {
+        Menu menu = new Menu();
+        MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
+        menu.addToMenu(item);
+        menu.save();
     }
 }
