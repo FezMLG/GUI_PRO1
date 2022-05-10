@@ -2,6 +2,7 @@ package com.fezmlg.order;
 
 import com.fezmlg.menu.MenuItem;
 import com.fezmlg.utils.IDGenerator;
+import com.fezmlg.utils.JSONSaver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class Order {
     public UUID id;
     public OrderType orderType;
     public String address;
-    public ArrayList<MenuItem> orderItems;
+    public ArrayList<MenuItem> orderItems = new ArrayList<>();
 
     public Order(OrderType orderType, String address) {
         this.id = new IDGenerator().getID();
@@ -21,8 +22,17 @@ public class Order {
         this.address = address;
     }
 
-    public void addToOrder(MenuItem... itemToAdd) {
+    public UUID getId() {
+        return id;
+    }
+
+    public ArrayList<MenuItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public Order addToOrder(MenuItem... itemToAdd) {
         this.orderItems.addAll(Arrays.asList(itemToAdd));
+        return this;
     }
 
     public void removeFromOrder(MenuItem... itemToRemove) {
