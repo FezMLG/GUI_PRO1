@@ -20,4 +20,14 @@ class MenuTest {
         Assertions.assertEquals(menu.addToMenu(item).getMenuList(), list);
     }
 
+    @Test
+    void removeItem() {
+        Menu menu = new Menu();
+        ArrayList<MenuItem> list = new ArrayList<MenuItem>();
+        MenuItem item = new MenuItem(0, "test", "desc", 4.10 );
+        menu.addToMenu(item);
+        menu.removeItem(item);
+        Assertions.assertEquals(menu.getMenuList(), list);
+
+    }
 }
