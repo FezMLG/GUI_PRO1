@@ -1,15 +1,19 @@
 package com.fezmlg.menu;
 
+import com.fezmlg.utils.IDGenerator;
+
+import java.util.UUID;
+
 public class MenuItem {
 
-    private int id;
+    private UUID id;
     private String name;
     private String description;
     private double price;
     private boolean isAvailable;
 
-    public MenuItem(int id, String name, String description, double price, boolean isAvailable) {
-        this.id = id;
+    public MenuItem(String name, String description, double price, boolean isAvailable) {
+        this.id = new IDGenerator().getID();
         this.name = name;
         this.description = description;
         this.price = price;
@@ -28,12 +32,8 @@ public class MenuItem {
         this.price = price;
     }
 
-    public int getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {

@@ -14,7 +14,7 @@ class MenuTest {
     void addToMenu() {
         Menu menu = new Menu();
         ArrayList<MenuItem> list = new ArrayList<>();
-        MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
+        MenuItem item = new MenuItem( "test", "desc", 4.10 , true);
         list.add(item);
         Assertions.assertEquals(menu.addToMenu(item).getMenuList(), list);
     }
@@ -23,7 +23,7 @@ class MenuTest {
     void removeItem() {
         Menu menu = new Menu();
         ArrayList<MenuItem> list = new ArrayList<>();
-        MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
+        MenuItem item = new MenuItem( "test", "desc", 4.10 , true);
         menu.addToMenu(item);
         menu.removeItem(item);
         Assertions.assertEquals(menu.getMenuList(), list);
@@ -31,7 +31,7 @@ class MenuTest {
 
     @Test
     void canChangeAvailability() {
-        MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
+        MenuItem item = new MenuItem( "test", "desc", 4.10 , true);
         Assertions.assertTrue(item.isAvailable());
         item.setAvailable(false);
         Assertions.assertFalse(item.isAvailable());
@@ -40,7 +40,7 @@ class MenuTest {
     @Test
     void creatingFileTest() {
         Menu menu = new Menu();
-        MenuItem item = new MenuItem(0, "test", "desc", 4.10 , true);
+        MenuItem item = new MenuItem( "test", "desc", 4.10 , true);
         menu.addToMenu(item);
         menu.save();
     }
