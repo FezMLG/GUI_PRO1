@@ -4,6 +4,7 @@ import com.fezmlg.utils.JSONSaver;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Menu {
 
@@ -11,13 +12,16 @@ public class Menu {
 
     public Menu(){}
 
-    public Menu addToMenu(MenuItem itemToAdd){
-        this.menuList.add(itemToAdd);
+    public Menu addToMenu(MenuItem... itemToAdd) {
+        this.menuList.addAll(Arrays.asList(itemToAdd));
         return this;
     }
 
-    public Menu removeItem(MenuItem itemToRemove) {
-        this.menuList.removeIf(n -> n.getId() == itemToRemove.getId());
+    public Menu removeItem(MenuItem... itemToRemove) {
+        for (int i = 0; i < itemToRemove.length; i++) {
+            int finalI = i;
+            this.menuList.removeIf(n -> n.getId() == itemToRemove[finalI].getId());
+        }
         return this;
     }
 

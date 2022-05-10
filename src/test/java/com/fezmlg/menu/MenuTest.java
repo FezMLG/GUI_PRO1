@@ -24,6 +24,7 @@ class MenuTest {
         Menu menu = new Menu();
         ArrayList<MenuItem> list = new ArrayList<>();
         MenuItem item = new MenuItem( "test", "desc", 4.10 , true);
+        MenuItem item2 = new MenuItem( "test", "desc", 4.10 , true);
         menu.addToMenu(item);
         menu.removeItem(item);
         Assertions.assertEquals(menu.getMenuList(), list);
