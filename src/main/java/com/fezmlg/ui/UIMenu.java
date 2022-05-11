@@ -22,19 +22,30 @@ public class UIMenu {
         }
     }
 
-    public void showAndChoose(){
+//    public void showAndChoose(){
+//        UI ui = new UI();
+//        UIMenu uiMenu = new UIMenu();
+//        for (UIMenuOption option : listOfOptions) {
+//            ui.print(String.valueOf(option.getOrder()), " ");
+//            ui.println(option.getDescription());
+//        }
+//        int key = ui.listenForKey();
+//        this.listOfOptions.removeIf(n -> n.getOrder() != key);
+//        ui.println("Chosen option:");
+//        for (UIMenuOption option : listOfOptions) {
+//            ui.print(String.valueOf(option.getOrder()));
+//            ui.println(option.getDescription());
+//        }
+//    }
+
+    public int showAndChoose(){
         UI ui = new UI();
         UIMenu uiMenu = new UIMenu();
         for (UIMenuOption option : listOfOptions) {
-            ui.print(String.valueOf(option.getOrder()));
+            ui.print(String.valueOf(option.getOrder()), " ");
             ui.println(option.getDescription());
         }
         int key = ui.listenForKey();
-        this.listOfOptions.removeIf(n -> n.getOrder() != key);
-        ui.println("Chosen option:");
-        for (UIMenuOption option : listOfOptions) {
-            ui.print(String.valueOf(option.getOrder()));
-            ui.println(option.getDescription());
-        }
+        return key;
     }
 }

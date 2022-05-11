@@ -1,5 +1,6 @@
 package com.fezmlg.ui;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class UI {
@@ -25,6 +26,23 @@ public class UI {
 
         int key = Integer.parseInt(scanner.nextLine());
         return key;
+    }
+
+    public String listenForInput(){
+        Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+        String input = scanner.nextLine();
+        return input;
+    }
+
+    public boolean listenForAcceptance(String yes, String no){
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+//        while(!Objects.equals(input, yes) || !Objects.equals(input, no)){
+//            println("Invalid character");
+//            input = scanner.nextLine();
+//        }
+
+        return (Objects.equals(input, yes));
     }
 
 }
