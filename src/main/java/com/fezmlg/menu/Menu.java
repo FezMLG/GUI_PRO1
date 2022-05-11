@@ -12,6 +12,10 @@ public class Menu {
 
     public Menu(){}
 
+    public void show(){
+        
+    }
+
     public Menu addToMenu(MenuItem... itemToAdd) {
         this.menuList.addAll(Arrays.asList(itemToAdd));
         return this;

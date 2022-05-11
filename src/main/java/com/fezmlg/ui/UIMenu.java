@@ -14,5 +14,27 @@ public class UIMenu {
         this.listOfOptions.addAll(Arrays.asList(options));
     }
 
-    //TODO printing options
+    public void show(){
+        UI ui = new UI();
+        for (UIMenuOption option : listOfOptions) {
+            ui.print(String.valueOf(option.getOrder()));
+            ui.println(option.getDescription());
+        }
+    }
+
+    public void showAndChoose(){
+        UI ui = new UI();
+        UIMenu uiMenu = new UIMenu();
+        for (UIMenuOption option : listOfOptions) {
+            ui.print(String.valueOf(option.getOrder()));
+            ui.println(option.getDescription());
+        }
+        int key = ui.listenForKey();
+        this.listOfOptions.removeIf(n -> n.getOrder() != key);
+        ui.println("Chosen option:");
+        for (UIMenuOption option : listOfOptions) {
+            ui.print(String.valueOf(option.getOrder()));
+            ui.println(option.getDescription());
+        }
+    }
 }
