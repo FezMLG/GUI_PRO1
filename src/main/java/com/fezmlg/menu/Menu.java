@@ -15,24 +15,36 @@ public class Menu {
     public Menu(){}
 
     public UIMenu getMenuMenu(){
-        UIMenu menu = new UIMenu("Menu", false);
+        UIMenu uiMenu = new UIMenu("Menu", true);
 
-        menu.addOption(1, new UIMenuOption("Show menu", () -> {
-            menu.goToMenu(getMenuList());
+        uiMenu.addOption(1, new UIMenuOption("Show Items in Menu", () -> {
+            uiMenu.goToMenu(this.getMenuList());
         }, false));
 
-        return menu;
+        return uiMenu;
     }
+
+//    public UIMenu getMenuList(){
+//        UIMenu uiMenu = new UIMenu("Menu List", false);
+//
+//        int i = 1;
+//        for(MenuItem menuItem : menuList){
+//            uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> {
+//                uiMenu.goToMenu(menu.getShipMenu());
+//            }, true));
+////            System.out.println(menuItem.getName() + " " + menuItem.getDescription());
+//            i++;
+//        }
+//
+//        return uiMenu;
+//    }
 
     public UIMenu getMenuList(){
         UIMenu uiMenu = new UIMenu("Menu List", false);
 
         int i = 1;
         for(MenuItem menuItem : menuList){
-//            uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> {
-//                uiMenu.goToMenu(menu.getShipMenu());
-//            }, true));
-            System.out.println(menuItem.getName() + " " + menuItem.getDescription());
+            uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> System.out.println(menuItem.getName() + " " + menuItem.getDescription()), true));
             i++;
         }
 

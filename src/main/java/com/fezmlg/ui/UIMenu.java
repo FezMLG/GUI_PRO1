@@ -82,7 +82,7 @@ public class UIMenu {
                 continue;
             }
 
-            clearScreen();
+//            clearScreen();
 
             if(listOfOptions.containsKey(selectedOption)){
                 UIMenuOption option = listOfOptions.get(selectedOption);
