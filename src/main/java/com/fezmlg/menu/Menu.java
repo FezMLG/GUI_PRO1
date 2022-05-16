@@ -5,10 +5,8 @@ import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
 import com.fezmlg.utils.JSONSaver;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class Menu {
 
@@ -16,19 +14,29 @@ public class Menu {
 
     public Menu(){}
 
-    public void show(){
-        UIMenuOption uiMenuOption = new UIMenuOption(1, "Dodaj do menu");
-        UIMenuOption uiMenuOption2 = new UIMenuOption(2, "Edytuj pozycję");
-        UIMenu uiMenu = new UIMenu(uiMenuOption, uiMenuOption2);
-        UI ui = new UI();
-        int chosen = uiMenu.showAndChoose();
-        switch (chosen){
-            case 1:
-                this.menuList.add(itemMaker());
-                ui.println("added to menu");
+    public UIMenu getMenuMenu(){
+        UIMenu menu = new UIMenu("Menu", false);
+
+        menu.addOption(1, new UIMenuOption("Show menu", () -> {
+            menu.goToMenu(getMenuList());
+        }, false));
+
+        return menu;
+    }
+
+    public UIMenu getMenuList(){
+        UIMenu uiMenu = new UIMenu("Menu List", false);
+
+        int i = 1;
+        for(MenuItem menuItem : menuList){
+//            uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> {
+//                uiMenu.goToMenu(menu.getShipMenu());
+//            }, true));
+            System.out.println(menuItem.getName() + " " + menuItem.getDescription());
+            i++;
         }
 
-
+        return uiMenu;
     }
 
     private MenuItem itemMaker(){
@@ -60,9 +68,9 @@ public class Menu {
         return this;
     }
 
-    public ArrayList<MenuItem> getMenuList() {
-        return menuList;
-    }
+//    public ArrayList<MenuItem> getMenuList() {
+//        return menuList;
+//    }
 
     public void setMenuList(ArrayList<MenuItem> menuList) {
         this.menuList = menuList;
