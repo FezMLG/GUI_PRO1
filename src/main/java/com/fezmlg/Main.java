@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         menu = new Menu();
         loadDemo();
-        mainMenu = new UIMenu("Main Menu", true);
+        mainMenu = new UIMenu("Main Menu", false);
 
         mainMenu.addOption(1, new UIMenuOption("Menu", () -> {
             mainMenu.goToMenu(menu.getMenuMenu());

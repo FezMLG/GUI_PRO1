@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 class MenuTest {
@@ -16,7 +15,7 @@ class MenuTest {
         ArrayList<MenuItem> list = new ArrayList<>();
         MenuItem item = new MenuItem( "test", "desc", 4.10 , true);
         list.add(item);
-        Assertions.assertEquals(menu.addToMenu(item).getMenuList(), list);
+        Assertions.assertEquals(menu.addToMenu(item).getMenuItems(), list);
     }
 
     @Test
@@ -28,7 +27,7 @@ class MenuTest {
         menu.addToMenu(item, item2);
         menu.removeItem(item);
         list.add(item2);
-        Assertions.assertEquals(menu.getMenuList(), list);
+        Assertions.assertEquals(menu.getMenuItems(), list);
     }
 
     @Test
