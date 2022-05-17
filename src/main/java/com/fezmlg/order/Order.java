@@ -1,6 +1,7 @@
 package com.fezmlg.order;
 
 import com.fezmlg.menu.MenuItem;
+import com.fezmlg.ui.UI;
 import com.fezmlg.utils.IDGenerator;
 import com.fezmlg.utils.JSONSaver;
 
@@ -42,4 +43,11 @@ public class Order {
         }
     }
 
+    public OrderType getOrderType() {
+        return orderType;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 }

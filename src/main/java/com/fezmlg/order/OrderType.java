@@ -1,6 +1,6 @@
 package com.fezmlg.order;
 
-enum OrderType {
+public enum OrderType {
     LOCAL,
     ONLINE
 }

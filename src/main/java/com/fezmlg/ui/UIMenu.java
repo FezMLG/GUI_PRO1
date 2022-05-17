@@ -1,13 +1,11 @@
 package com.fezmlg.ui;
 
-import com.fezmlg.menu.Menu;
-import com.fezmlg.menu.MenuItem;
-
 import java.util.*;
 
 public class UIMenu {
 
     private HashMap<Integer, UIMenuOption> listOfOptions = new HashMap<>();
+    private ArrayList<String> listOfText = new ArrayList<>();
     private String menuTitle;
     private boolean subMenu;
     private Integer selectedOption;
@@ -35,6 +33,25 @@ public class UIMenu {
         listOfOptions.put(optionNumber, option);
     }
 
+    public void addText(String... textToAdd){
+        StringBuilder toAdd = new StringBuilder();
+        for (String text :
+                textToAdd) {
+            toAdd.append(text);
+            toAdd.append("\n");
+        }
+        listOfText.add(toAdd.toString());
+    }
+    public String multiLineBuilder(String... textToAdd){
+        StringBuilder toAdd = new StringBuilder();
+        for (String text :
+                textToAdd) {
+            toAdd.append(text);
+            toAdd.append("\n");
+        }
+        return toAdd.toString();
+    }
+
 //    public void showAndChoose(){
 //        UI ui = new UI();
 //        UIMenu uiMenu = new UIMenu();
@@ -60,15 +77,19 @@ public class UIMenu {
             System.out.println("   " + menuTitle + "   ");
             System.out.println("----------------------");
             System.out.println("");
+            for(String text : listOfText){
+                System.out.println(text);
+                System.out.println("----------------------");
+            }
             for(int number : listOfOptions.keySet()){
                 System.out.println(number + ". " + listOfOptions.get(number).getDescription());
             }
             if(subMenu){
                 System.out.println("0. Back");
-                System.out.println("-1. Exit");
+                System.out.println("-1. Quit");
             }
             else{
-                System.out.println("0. Exit");
+                System.out.println("0. Back");
             }
             System.out.println("");
             System.out.print("Choose option: ");

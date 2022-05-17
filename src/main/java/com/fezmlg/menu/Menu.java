@@ -99,6 +99,9 @@ public class Menu {
         return this;
     }
 
+    public ArrayList<MenuItem> getMenuList() {
+        return menuList;
+    }
 //    public ArrayList<MenuItem> getMenuList() {
 //        return menuList;
 //    }
