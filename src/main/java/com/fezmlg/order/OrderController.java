@@ -1,5 +1,6 @@
 package com.fezmlg.order;
 
+import com.fezmlg.menu.Menu;
 import com.fezmlg.menu.MenuItem;
 import com.fezmlg.ui.UI;
 import com.fezmlg.ui.UIMenu;
@@ -11,9 +12,13 @@ import java.util.ArrayList;
 public class OrderController {
     private static UI ui = new UI();
     private ArrayList<Order> orderList = new ArrayList<>();
+    private Menu menu;
 
     public OrderController() {
+    }
 
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public UIMenu getOrderMenu() {
@@ -22,7 +27,7 @@ public class OrderController {
         uiMenu.addOption(1, new UIMenuOption("Show and Manage Items in Orders", () -> {
             uiMenu.goToMenu(this.getOrderItems());
         }, false));
-//        uiMenu.addOption(2, new UIMenuOption("Add item to order", () -> this.itemMaker(), false));
+        uiMenu.addOption(2, new UIMenuOption("Initialize new order", this::orderMaker, false));
 
         return uiMenu;
     }
@@ -47,7 +52,6 @@ public class OrderController {
         int i = 1;
         for (MenuItem item : order.orderItems) {
             uiMenu.addOption(i, new UIMenuOption(uiMenu.multiLineBuilder(
-                    "ID: " + item.getId(),
                     "Name: " + item.getName(),
                     "Description: " + item.getDescription(),
                     "Price: " + item.getPrice()
@@ -57,6 +61,7 @@ public class OrderController {
 //            System.out.println(order.getName() + " " + order.getDescription());
             i++;
         }
+        //TODO add and remove item from order
         return uiMenu;
     }
 
@@ -68,20 +73,23 @@ public class OrderController {
         ui.listenForInput();
     }
 
-//    private void itemMaker(){
-//        ui.println("Product name:");
-//        String name = ui.listenForInput();
-//        ui.println("Product description:");
-//        String desc = ui.listenForInput();
-//        ui.println("Product price:");
-//        double price = Double.parseDouble(ui.listenForInput());
-//
-//        ui.println("Is product available? Y/N");
-//        boolean isAvailable = ui.listenForAcceptance("Y", "N");
-//
-//        ui.println(name, desc, String.valueOf(price), String.valueOf(isAvailable));
-//        this.addOrder(new MenuItem(name, desc, price, isAvailable));
-//    }
+    private void orderMaker(){
+        ui.println("Select order type:");
+        ui.println("1 - Local, 2 - Remote");
+        boolean orderBoolean = ui.listenForAcceptance("1", "2");
+        OrderType orderType;
+        String address;
+        if(orderBoolean){
+            orderType = OrderType.LOCAL;
+            ui.println("Table number");
+            address = ("Table " + ui.listenForInput());
+        }else {
+            orderType = OrderType.ONLINE;
+            ui.println("Address");
+            address = ui.listenForInput();
+        }
+        orderList.add(new Order(orderType, address));
+    }
 
     public ArrayList<Order> getOrderList() {
         return orderList;

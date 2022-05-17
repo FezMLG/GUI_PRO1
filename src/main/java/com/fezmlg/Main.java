@@ -18,6 +18,7 @@ public class Main {
         menu = new Menu();
         orderController = new OrderController();
         loadDemo();
+        orderController.setMenu(menu);
         mainMenu = new UIMenu("Main Menu", true);
 
         mainMenu.addOption(1, new UIMenuOption("Menu", () -> {
