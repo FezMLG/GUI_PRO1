@@ -24,7 +24,7 @@ public class OrderController {
     public UIMenu getOrderMenu() {
         UIMenu uiMenu = new UIMenu("Menu", false);
 
-        uiMenu.addOption(1, new UIMenuOption("Show and Manage Items in Orders", () -> {
+        uiMenu.addOption(1, new UIMenuOption("Show orders and manage items", () -> {
             uiMenu.goToMenu(this.getOrderItems());
         }, false));
         uiMenu.addOption(2, new UIMenuOption("Initialize new order", this::orderMaker, false));
@@ -51,17 +51,47 @@ public class OrderController {
         UIMenu uiMenu = new UIMenu(order.getOrderType() + " " + order.getAddress(), false);
         int i = 1;
         for (MenuItem item : order.orderItems) {
-            uiMenu.addOption(i, new UIMenuOption(uiMenu.multiLineBuilder(
-                    "Name: " + item.getName(),
-                    "Description: " + item.getDescription(),
-                    "Price: " + item.getPrice()
-            ), () -> {
-//                this.itemPrinter(item);
-            }, false));
+            uiMenu.addText(
+                "Name: " + item.getName(),
+                "Description: " + item.getDescription(),
+                "Price: " + item.getPrice()
+            );
 //            System.out.println(order.getName() + " " + order.getDescription());
             i++;
         }
-        //TODO add and remove item from order
+        uiMenu.addOption(i + 1, new UIMenuOption("Add item to order", () -> {
+            uiMenu.goToMenu(this.modifyItemList(true, order));
+        }, false));
+        uiMenu.addOption(i + 2, new UIMenuOption("Remove item from order", () -> {
+            uiMenu.goToMenu(this.modifyItemList(false, order));
+        }, false));         //TODO add and remove item from order
+        return uiMenu;
+    }
+
+    private UIMenu modifyItemList(boolean save, Order order) {
+        UIMenu uiMenu = new UIMenu("Choose order to " + save, false);
+        int i = 1;
+        if (save) {
+            for (MenuItem item :
+                    menu.getMenuList()) {
+                uiMenu.addOption(i, new UIMenuOption(uiMenu.multiLineBuilder(
+                        "Name: " + item.getName(),
+                        "Description: " + item.getDescription(),
+                        "Price: " + item.getPrice()
+                ), () -> order.addToOrder(item), false));
+                i++;
+            }
+        } else {
+            for (MenuItem item :
+                    menu.getMenuList()) {
+                uiMenu.addOption(i, new UIMenuOption(uiMenu.multiLineBuilder(
+                        "Name: " + item.getName(),
+                        "Description: " + item.getDescription(),
+                        "Price: " + item.getPrice()
+                ), () -> order.removeFromOrder(item), false));
+                i++;
+            }
+        }
         return uiMenu;
     }
 
@@ -73,17 +103,17 @@ public class OrderController {
         ui.listenForInput();
     }
 
-    private void orderMaker(){
+    private void orderMaker() {
         ui.println("Select order type:");
         ui.println("1 - Local, 2 - Remote");
         boolean orderBoolean = ui.listenForAcceptance("1", "2");
         OrderType orderType;
         String address;
-        if(orderBoolean){
+        if (orderBoolean) {
             orderType = OrderType.LOCAL;
             ui.println("Table number");
             address = ("Table " + ui.listenForInput());
-        }else {
+        } else {
             orderType = OrderType.ONLINE;
             ui.println("Address");
             address = ui.listenForInput();
