@@ -6,11 +6,15 @@ import com.fezmlg.ui.UI;
 import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
 import com.fezmlg.utils.JSONSaver;
+import org.apache.commons.lang3.time.DateUtils;
 
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class OrderController {
-    private static UI ui = new UI();
+    private static final UI ui = new UI();
     private ArrayList<Order> orderList = new ArrayList<>();
     private Menu menu;
 
@@ -24,9 +28,7 @@ public class OrderController {
     public UIMenu getOrderMenu() {
         UIMenu uiMenu = new UIMenu("Menu", false);
 
-        uiMenu.addOption(1, new UIMenuOption("Show orders and manage items", () -> {
-            uiMenu.goToMenu(this.getOrderItems());
-        }, false));
+        uiMenu.addOption(1, new UIMenuOption("Show orders and manage items", () -> uiMenu.goToMenu(this.getOrderItems()), false));
         uiMenu.addOption(2, new UIMenuOption("Initialize new order", this::orderMaker, false));
 
         return uiMenu;
@@ -37,9 +39,7 @@ public class OrderController {
 
         int i = 1;
         for (Order item : orderList) {
-            uiMenu.addOption(i, new UIMenuOption(item.getOrderType() + " " + item.getAddress(), () -> {
-                uiMenu.goToMenu(this.getOrderItem(item));
-            }, false));
+            uiMenu.addOption(i, new UIMenuOption(item.getId() + " " + item.getOrderType() + " " + item.getAddress(), () -> uiMenu.goToMenu(this.getOrderItem(item)), false));
 //            System.out.println(item.getName() + " " + item.getDescription());
             i++;
         }
@@ -52,19 +52,15 @@ public class OrderController {
         int i = 1;
         for (MenuItem item : order.orderItems) {
             uiMenu.addText(
-                "Name: " + item.getName(),
-                "Description: " + item.getDescription(),
-                "Price: " + item.getPrice()
+                    "Name: " + item.getName(),
+                    "Description: " + item.getDescription(),
+                    "Price: " + item.getPrice()
             );
 //            System.out.println(order.getName() + " " + order.getDescription());
             i++;
         }
-        uiMenu.addOption(i + 1, new UIMenuOption("Add item to order", () -> {
-            uiMenu.goToMenu(this.modifyItemList(true, order));
-        }, false));
-        uiMenu.addOption(i + 2, new UIMenuOption("Remove item from order", () -> {
-            uiMenu.goToMenu(this.modifyItemList(false, order));
-        }, false));         //TODO add and remove item from order
+        uiMenu.addOption(i + 1, new UIMenuOption("Add item to order", () -> uiMenu.goToMenu(this.modifyItemList(true, order)), true));
+        uiMenu.addOption(i + 2, new UIMenuOption("Remove item from order", () -> uiMenu.goToMenu(this.modifyItemList(false, order)), true));
         return uiMenu;
     }
 
@@ -83,7 +79,7 @@ public class OrderController {
             }
         } else {
             for (MenuItem item :
-                    menu.getMenuList()) {
+                    order.getOrderItems()) {
                 uiMenu.addOption(i, new UIMenuOption(uiMenu.multiLineBuilder(
                         "Name: " + item.getName(),
                         "Description: " + item.getDescription(),
@@ -118,7 +114,23 @@ public class OrderController {
             ui.println("Address");
             address = ui.listenForInput();
         }
-        orderList.add(new Order(orderType, address));
+        int size = generateID();
+        orderList.add(new Order(size, orderType, address));
+    }
+
+    public int generateID() {
+        int size = 1;
+        for (Order order :
+                this.orderList) {
+            if (DateUtils.isSameDay(convertToDate(order.getOrderTime()), convertToDate(LocalDateTime.now()))) {
+                size++;
+            }
+        }
+        return size;
+    }
+
+    public Date convertToDate(LocalDateTime dateToConvert) {
+        return java.sql.Timestamp.valueOf(dateToConvert);
     }
 
     public ArrayList<Order> getOrderList() {

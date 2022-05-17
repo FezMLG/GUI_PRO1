@@ -34,12 +34,12 @@ public class Main {
     public static void loadDemo() {
         menu.addToMenu(new MenuItem("Item 1", "desc for item 1", 1, true));
         menu.addToMenu(new MenuItem("Item 2", "desc for item 2", 2, true));
-        menu.addToMenu(new MenuItem("Item 3", "desc for item 3", 3, true));
-        Order order = new Order(OrderType.LOCAL, "address 1");
+        Order order = new Order(1, OrderType.LOCAL, "address 1");
         for (MenuItem item :
                 menu.getMenuList()) {
             order.addToOrder(item);
         }
+        menu.addToMenu(new MenuItem("Item 3", "desc for item 3", 3, true));
         orderController.addOrder(order);
     }
 }

@@ -13,8 +13,8 @@ class OrderTest {
 
     @Test
     void addToOrder() {
-        Order order = new Order(OrderType.LOCAL, "table 1");
-        MenuItem item = new MenuItem( "test", "desc", 4.10 , true);
+        Order order = new Order(1, OrderType.LOCAL, "table 1");
+        MenuItem item = new MenuItem("test", "desc", 4.10, true);
         ArrayList<MenuItem> list = new ArrayList<>();
         order.addToOrder(item);
         list.add(item);
