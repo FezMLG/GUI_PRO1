@@ -6,14 +6,14 @@ import java.util.UUID;
 
 public class MenuItem {
 
-    private UUID id;
+    private int id;
     private String name;
     private String description;
     private double price;
     private boolean isAvailable;
 
-    public MenuItem(String name, String description, double price, boolean isAvailable) {
-        this.id = new IDGenerator().getID();
+    public MenuItem(Integer id, String name, String description, double price, boolean isAvailable) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -32,7 +32,7 @@ public class MenuItem {
         this.price = price;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 

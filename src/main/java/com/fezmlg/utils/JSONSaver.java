@@ -1,8 +1,8 @@
 package com.fezmlg.utils;
 
 import com.fezmlg.Logger;
+import com.fezmlg.menu.MenuItem;
 import com.fezmlg.order.Order;
-import com.fezmlg.order.OrderController;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class JSONSaver {
 
-    private Gson gson;
+    private final Gson gson;
 
     public JSONSaver() {
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -37,14 +37,27 @@ public class JSONSaver {
         }
     }
 
-    public ArrayList<Order> loadFromFile(String file) {
+    public ArrayList<Order> loadFromFileOrder(String file) {
         String filename = file + ".json";
         String path = "./";
         try {
             JsonReader reader = new JsonReader(new FileReader(path + filename));
-            Type orderListType = new TypeToken<ArrayList<Order>>() {
+            Type listType = new TypeToken<ArrayList<Order>>() {
             }.getType();
-            return gson.fromJson(reader, orderListType);
+            return gson.fromJson(reader, listType);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<MenuItem> loadFromFileMenu(String file) {
+        String filename = file + ".json";
+        String path = "./";
+        try {
+            JsonReader reader = new JsonReader(new FileReader(path + filename));
+            Type listType = new TypeToken<ArrayList<MenuItem>>() {
+            }.getType();
+            return gson.fromJson(reader, listType);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -14,7 +14,7 @@ class OrderTest {
     @Test
     void addToOrder() {
         Order order = new Order(1, OrderType.LOCAL, "table 1", OrderStatus.PLACED);
-        MenuItem item = new MenuItem("test", "desc", 4.10, true);
+        MenuItem item = new MenuItem(1, "test", "desc", 4.10, true);
         ArrayList<MenuItem> list = new ArrayList<>();
         order.addToOrder(item);
         list.add(item);

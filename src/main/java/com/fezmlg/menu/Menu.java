@@ -1,5 +1,6 @@
 package com.fezmlg.menu;
 
+import com.fezmlg.order.Order;
 import com.fezmlg.ui.UI;
 import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
@@ -23,7 +24,8 @@ public class Menu {
             uiMenu.goToMenu(this.getMenuItems());
         }, false));
         uiMenu.addOption(2, new UIMenuOption("Add item to menu", () -> this.itemMaker(), false));
-
+        uiMenu.addOption(3, new UIMenuOption("Save menu", this::save, false));
+        uiMenu.addOption(4, new UIMenuOption("Load menu", this::load, false));
         return uiMenu;
     }
 
@@ -88,7 +90,7 @@ public class Menu {
         boolean isAvailable = ui.listenForAcceptance("Y", "N");
 
         ui.println(name, desc, String.valueOf(price), String.valueOf(isAvailable));
-        this.addToMenu(new MenuItem(name, desc, price, isAvailable));
+        this.addToMenu(new MenuItem(menuList.size() + 1, name, desc, price, isAvailable));
     }
 
     public Menu addToMenu(MenuItem... itemToAdd) {
@@ -116,10 +118,11 @@ public class Menu {
     }
 
     public void save() {
-        new JSONSaver().saveToFile(menuList, "menu");
+        new JSONSaver().saveToFile(this.menuList, "menu");
     }
 
     public void load() {
-
+        ArrayList<MenuItem> data = new JSONSaver().loadFromFileMenu("menu");
+        this.setMenuList(data);
     }
 }

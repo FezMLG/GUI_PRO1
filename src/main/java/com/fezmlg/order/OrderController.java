@@ -151,7 +151,7 @@ public class OrderController {
     }
 
     public void load() {
-        ArrayList<Order> data = new JSONSaver().loadFromFile("orderController");
+        ArrayList<Order> data = new JSONSaver().loadFromFileOrder("orderController");
         this.setOrderList(data);
     }
 }

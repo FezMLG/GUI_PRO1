@@ -38,14 +38,14 @@ public class Main {
     }
 
     public static void loadDemo() {
-        menu.addToMenu(new MenuItem("Item 1", "desc for item 1", 1, true));
-        menu.addToMenu(new MenuItem("Item 2", "desc for item 2", 2, true));
+        menu.addToMenu(new MenuItem(1, "Item 1", "desc for item 1", 1, true));
+        menu.addToMenu(new MenuItem(2, "Item 2", "desc for item 2", 2, true));
         Order order = new Order(1, OrderType.LOCAL, "address 1", OrderStatus.PLACED);
         for (MenuItem item :
                 menu.getMenuList()) {
             order.addToOrder(item);
         }
-        menu.addToMenu(new MenuItem("Item 3", "desc for item 3", 3, true));
+        menu.addToMenu(new MenuItem(3, "Item 3", "desc for item 3", 3, true));
         orderController.addOrder(order);
     }
 }
