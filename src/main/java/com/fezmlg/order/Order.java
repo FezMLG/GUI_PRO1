@@ -16,12 +16,14 @@ public class Order {
     public String address;
     public LocalDateTime orderTime;
     public ArrayList<MenuItem> orderItems = new ArrayList<>();
+    public OrderStatus orderStatus;
 
-    public Order(Integer id, OrderType orderType, String address) {
+    public Order(Integer id, OrderType orderType, String address, OrderStatus orderStatus) {
         this.id = id;
         this.orderType = orderType;
         this.address = address;
         this.orderTime = LocalDateTime.now();
+        this.orderStatus = orderStatus;
     }
 
     public int getId() {

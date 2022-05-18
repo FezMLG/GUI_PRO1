@@ -4,6 +4,7 @@ import com.fezmlg.menu.Menu;
 import com.fezmlg.menu.MenuItem;
 import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderController;
+import com.fezmlg.order.OrderStatus;
 import com.fezmlg.order.OrderType;
 import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
@@ -34,7 +35,7 @@ public class Main {
     public static void loadDemo() {
         menu.addToMenu(new MenuItem("Item 1", "desc for item 1", 1, true));
         menu.addToMenu(new MenuItem("Item 2", "desc for item 2", 2, true));
-        Order order = new Order(1, OrderType.LOCAL, "address 1");
+        Order order = new Order(1, OrderType.LOCAL, "address 1", OrderStatus.PLACED);
         for (MenuItem item :
                 menu.getMenuList()) {
             order.addToOrder(item);

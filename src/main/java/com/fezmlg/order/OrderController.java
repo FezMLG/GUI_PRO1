@@ -115,7 +115,7 @@ public class OrderController {
             address = ui.listenForInput();
         }
         int size = generateID();
-        orderList.add(new Order(size, orderType, address));
+        orderList.add(new Order(size, orderType, address, OrderStatus.PLACED));
     }
 
     public int generateID() {
