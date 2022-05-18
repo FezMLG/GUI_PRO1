@@ -2,6 +2,7 @@ package com.fezmlg.order;
 
 import com.fezmlg.menu.MenuItem;
 import com.fezmlg.utils.IDGenerator;
+import com.fezmlg.utils.RandomNumber;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,6 +25,10 @@ public class Order {
         this.address = address;
         this.orderTime = LocalDateTime.now();
         this.orderStatus = orderStatus;
+    }
+
+    public Order() {
+
     }
 
     public int getId() {
@@ -97,6 +102,16 @@ public class Order {
             sum += menuItem.getPrice();
         }
         return sum;
+    }
+
+    public Order generateRandom(OrderController orderController) {
+        OrderType randOrderType = OrderType.ONLINE;
+        String address = "Palaca 10";
+        if (new RandomNumber().get(0, 10) % 2 == 0) {
+            randOrderType = OrderType.LOCAL;
+            address = "Table 10";
+        }
+        return new Order(orderController.getOrderList().size() + 1, randOrderType, address, OrderStatus.WAITING);
     }
 }
 

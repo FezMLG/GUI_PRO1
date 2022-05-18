@@ -31,20 +31,31 @@ public class OrderController {
         uiMenu.addOption(2, new UIMenuOption("Initialize new order", this::orderMaker, false));
         uiMenu.addOption(3, new UIMenuOption("Save orders to file", this::save, false));
         uiMenu.addOption(4, new UIMenuOption("Load orders from file", this::load, false));
+        uiMenu.addOption(5, new UIMenuOption("Add random order", this::addRandomOrder, false));
+        uiMenu.addOption(6, new UIMenuOption("Show waiting orders", () -> uiMenu.goToMenu(this.getOrderItems(OrderStatus.WAITING)), false));
 
         return uiMenu;
     }
 
     public UIMenu getOrderItems() {
         UIMenu uiMenu = new UIMenu("Order List", false);
-
         int i = 1;
         for (Order item : orderList) {
             uiMenu.addOption(i, new UIMenuOption(item.getId() + " " + item.getOrderType() + " " + item.getAddress(), () -> uiMenu.goToMenu(this.getOrderItem(item)), false));
-//            System.out.println(item.getName() + " " + item.getDescription());
             i++;
         }
 
+        return uiMenu;
+    }
+
+    public UIMenu getOrderItems(OrderStatus status) {
+        UIMenu uiMenu = new UIMenu("Order List", false);
+        ArrayList<Order> orderList = this.filterByStatus(status);
+        int i = 1;
+        for (Order item : orderList) {
+            uiMenu.addOption(i, new UIMenuOption(item.getId() + " " + item.getOrderType() + " " + item.getAddress(), () -> uiMenu.goToMenu(this.getOrderItem(item)), false));
+            i++;
+        }
         return uiMenu;
     }
 
@@ -153,5 +164,15 @@ public class OrderController {
     public void load() {
         ArrayList<Order> data = new JSONSaver().loadFromFileOrder("orderController");
         this.setOrderList(data);
+    }
+
+    public void addRandomOrder() {
+        this.addOrder(new Order().generateRandom(this));
+    }
+
+    public ArrayList<Order> filterByStatus(OrderStatus status) {
+        ArrayList<Order> copyList = this.orderList;
+        copyList.removeIf(n -> n.orderStatus != status);
+        return copyList;
     }
 }
