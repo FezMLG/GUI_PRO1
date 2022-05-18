@@ -81,4 +81,13 @@ public class Order {
     public void setOrderItems(ArrayList<MenuItem> orderItems) {
         this.orderItems = orderItems;
     }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 }
+
