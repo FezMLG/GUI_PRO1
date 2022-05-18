@@ -89,5 +89,14 @@ public class Order {
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
+
+    public double countMoneyFromItems() {
+        double sum = 0;
+        for (MenuItem menuItem :
+                this.orderItems) {
+            sum += menuItem.getPrice();
+        }
+        return sum;
+    }
 }
 

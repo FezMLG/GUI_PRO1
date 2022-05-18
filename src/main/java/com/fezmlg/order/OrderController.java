@@ -9,7 +9,6 @@ import com.fezmlg.utils.JSONSaver;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -25,11 +24,13 @@ public class OrderController {
         this.menu = menu;
     }
 
-    public UIMenu getOrderMenu() {
+    public UIMenu uiMainMenu() {
         UIMenu uiMenu = new UIMenu("Menu", false);
 
         uiMenu.addOption(1, new UIMenuOption("Show orders and manage items", () -> uiMenu.goToMenu(this.getOrderItems()), false));
         uiMenu.addOption(2, new UIMenuOption("Initialize new order", this::orderMaker, false));
+        uiMenu.addOption(3, new UIMenuOption("Save orders to file", this::save, false));
+        uiMenu.addOption(4, new UIMenuOption("Load orders from file", this::load, false));
 
         return uiMenu;
     }
@@ -137,11 +138,20 @@ public class OrderController {
         return orderList;
     }
 
+    public void setOrderList(ArrayList<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     public void addOrder(Order order) {
         this.orderList.add(order);
     }
 
     public void save() {
-        new JSONSaver().saveToFile(orderList, "orders");
+        new JSONSaver().saveToFile(orderList, "orderController");
+    }
+
+    public void load() {
+        ArrayList<Order> data = new JSONSaver().loadFromFile("orderController");
+        this.setOrderList(data);
     }
 }

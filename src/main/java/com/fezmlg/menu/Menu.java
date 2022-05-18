@@ -13,9 +13,10 @@ public class Menu {
     private ArrayList<MenuItem> menuList = new ArrayList<>();
     private static UI ui = new UI();
 
-    public Menu(){}
+    public Menu() {
+    }
 
-    public UIMenu getMenuMenu(){
+    public UIMenu uiMainMenu() {
         UIMenu uiMenu = new UIMenu("Menu", true);
 
         uiMenu.addOption(1, new UIMenuOption("Show and Manage Items in Menu", () -> {
@@ -26,11 +27,11 @@ public class Menu {
         return uiMenu;
     }
 
-    public UIMenu getMenuItems(){
+    public UIMenu getMenuItems() {
         UIMenu uiMenu = new UIMenu("Menu List", false);
 
         int i = 1;
-        for(MenuItem menuItem : menuList){
+        for (MenuItem menuItem : menuList) {
             uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> {
                 uiMenu.goToMenu(this.getMenuItem(menuItem));
             }, true));
@@ -41,19 +42,23 @@ public class Menu {
         return uiMenu;
     }
 
-    public UIMenu getMenuItem(MenuItem item){
+    public UIMenu getMenuItem(MenuItem item) {
         UIMenu uiMenu = new UIMenu(item.getName(), false);
-        uiMenu.addOption(1, new UIMenuOption("ID: " + item.getId(), () -> {}, false));
-        uiMenu.addOption(2, new UIMenuOption("Name: " + item.getName(), () -> {}, false));
-        uiMenu.addOption(3, new UIMenuOption("Description: " + item.getDescription(), () -> {}, false));
-        uiMenu.addOption(4, new UIMenuOption("Is Available: " + item.isAvailable(), () -> {}, false));
+        uiMenu.addOption(1, new UIMenuOption("ID: " + item.getId(), () -> {
+        }, false));
+        uiMenu.addOption(2, new UIMenuOption("Name: " + item.getName(), () -> {
+        }, false));
+        uiMenu.addOption(3, new UIMenuOption("Description: " + item.getDescription(), () -> {
+        }, false));
+        uiMenu.addOption(4, new UIMenuOption("Is Available: " + item.isAvailable(), () -> {
+        }, false));
         uiMenu.addOption(5, new UIMenuOption("Set availability", () -> this.setAvailability(item), false));
         uiMenu.addOption(6, new UIMenuOption("Remove", () -> this.removeItem(item), false));
 
         return uiMenu;
     }
 
-    public void setAvailability(MenuItem item){
+    public void setAvailability(MenuItem item) {
         ui.println("Is product available? Y/N");
         boolean isAvailable = ui.listenForAcceptance("Y", "N");
         item.setAvailable(isAvailable);
@@ -71,7 +76,7 @@ public class Menu {
 //        return uiMenu;
 //    }
 
-    private void itemMaker(){
+    private void itemMaker() {
         ui.println("Product name:");
         String name = ui.listenForInput();
         ui.println("Product description:");
@@ -110,7 +115,11 @@ public class Menu {
         this.menuList = menuList;
     }
 
-    public void save(){
+    public void save() {
         new JSONSaver().saveToFile(menuList, "menu");
+    }
+
+    public void load() {
+
     }
 }

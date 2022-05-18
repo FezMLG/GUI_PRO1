@@ -2,6 +2,7 @@ package com.fezmlg;
 
 import com.fezmlg.menu.Menu;
 import com.fezmlg.menu.MenuItem;
+import com.fezmlg.money.MoneyController;
 import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderController;
 import com.fezmlg.order.OrderStatus;
@@ -14,21 +15,25 @@ public class Main {
     private static UIMenu mainMenu;
     private static Menu menu;
     private static OrderController orderController;
+    private static MoneyController moneyController;
 
     public static void main(String[] args) {
         menu = new Menu();
         orderController = new OrderController();
+        moneyController = new MoneyController(orderController);
         loadDemo();
         orderController.setMenu(menu);
         mainMenu = new UIMenu("Main Menu", true);
 
         mainMenu.addOption(1, new UIMenuOption("Menu", () -> {
-            mainMenu.goToMenu(menu.getMenuMenu());
+            mainMenu.goToMenu(menu.uiMainMenu());
         }, false));
         mainMenu.addOption(2, new UIMenuOption("Orders", () -> {
-            mainMenu.goToMenu(orderController.getOrderMenu());
+            mainMenu.goToMenu(orderController.uiMainMenu());
         }, false));
-
+        mainMenu.addOption(3, new UIMenuOption("Money", () -> {
+            mainMenu.goToMenu(moneyController.uiMainMenu());
+        }, false));
         mainMenu.open();
     }
 
