@@ -3,6 +3,7 @@ package com.fezmlg.utils;
 import com.fezmlg.Logger;
 import com.fezmlg.menu.MenuItem;
 import com.fezmlg.order.Order;
+import com.fezmlg.staff.Staff;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -63,4 +64,16 @@ public class JSONSaver {
         }
     }
 
+    public ArrayList<Staff> loadFromFileStaff(String file) {
+        String filename = file + ".json";
+        String path = "./";
+        try {
+            JsonReader reader = new JsonReader(new FileReader(path + filename));
+            Type listType = new TypeToken<ArrayList<Staff>>() {
+            }.getType();
+            return gson.fromJson(reader, listType);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

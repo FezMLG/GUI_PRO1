@@ -7,6 +7,7 @@ import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderController;
 import com.fezmlg.order.OrderStatus;
 import com.fezmlg.order.OrderType;
+import com.fezmlg.staff.StaffController;
 import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
 
@@ -16,11 +17,13 @@ public class Main {
     private static Menu menu;
     private static OrderController orderController;
     private static MoneyController moneyController;
+    private static StaffController staffController;
 
     public static void main(String[] args) {
         menu = new Menu();
         orderController = new OrderController();
         moneyController = new MoneyController(orderController);
+        staffController = new StaffController();
         loadDemo();
         orderController.setMenu(menu);
         mainMenu = new UIMenu("Main Menu", true);
@@ -31,21 +34,18 @@ public class Main {
         mainMenu.addOption(2, new UIMenuOption("Orders", () -> {
             mainMenu.goToMenu(orderController.uiMainMenu());
         }, false));
-        mainMenu.addOption(3, new UIMenuOption("Money", () -> {
+        mainMenu.addOption(3, new UIMenuOption("Staff", () -> {
+            mainMenu.goToMenu(staffController.uiMainMenu());
+        }, false));
+        mainMenu.addOption(4, new UIMenuOption("Money", () -> {
             mainMenu.goToMenu(moneyController.uiMainMenu());
         }, false));
         mainMenu.open();
     }
 
     public static void loadDemo() {
-        menu.addToMenu(new MenuItem(1, "Item 1", "desc for item 1", 1, true));
-        menu.addToMenu(new MenuItem(2, "Item 2", "desc for item 2", 2, true));
-        Order order = new Order(1, OrderType.LOCAL, "address 1", OrderStatus.PLACED);
-        for (MenuItem item :
-                menu.getMenuList()) {
-            order.addToOrder(item);
-        }
-        menu.addToMenu(new MenuItem(3, "Item 3", "desc for item 3", 3, true));
-        orderController.addOrder(order);
+        menu.load();
+        orderController.load();
+        staffController.load();
     }
 }

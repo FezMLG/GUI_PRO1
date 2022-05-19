@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "wdawd",
+    "number": "awdad",
+    "staffType": "COOK",
+    "madeOrders": 0,
+    "tips": 0.0
+  },
+  {
+    "id": 2,
+    "name": "staff 2",
+    "number": "212345678",
+    "staffType": "DELIVERY",
+    "madeOrders": 2,
+    "tips": 0
+  },
+  {
+    "id": 3,
+    "name": "staff 3",
+    "number": "212345678",
+    "staffType": "WAITER",
+    "madeOrders": 2,
+    "tips": 0
+  },
+  {
+    "id": 4,
+    "name": "staff 4",
+    "number": "212345678",
+    "staffType": "COOK",
+    "madeOrders": 2,
+    "tips": 0
+  }
+]
