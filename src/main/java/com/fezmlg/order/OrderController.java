@@ -110,7 +110,7 @@ public class OrderController {
     private void orderMaker() {
         ui.println("Select order type:");
         ui.println("1 - Local, 2 - Remote");
-        boolean orderBoolean = ui.listenForAcceptance("1", "2");
+        boolean orderBoolean = ui.listenForAcceptance("1");
         OrderType orderType;
         String address;
         if (orderBoolean) {

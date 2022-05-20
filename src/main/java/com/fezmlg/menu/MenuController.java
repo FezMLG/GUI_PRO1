@@ -54,7 +54,7 @@ public class MenuController {
 
     public void setAvailability(MenuItem item) {
         ui.println("Is product available? Y/N");
-        boolean isAvailable = ui.listenForAcceptance("Y", "N");
+        boolean isAvailable = ui.listenForAcceptance("Y");
         item.setAvailable(isAvailable);
     }
 
@@ -67,7 +67,7 @@ public class MenuController {
         double price = Double.parseDouble(ui.listenForInput());
 
         ui.println("Is product available? Y/N");
-        boolean isAvailable = ui.listenForAcceptance("Y", "N");
+        boolean isAvailable = ui.listenForAcceptance("Y");
 
         ui.println(name, desc, String.valueOf(price), String.valueOf(isAvailable));
         this.addToMenu(new MenuItem(menuList.size() + 1, name, desc, price, isAvailable));
