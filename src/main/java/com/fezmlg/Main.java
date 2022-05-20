@@ -7,6 +7,8 @@ import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderController;
 import com.fezmlg.order.OrderStatus;
 import com.fezmlg.order.OrderType;
+import com.fezmlg.restaurant.worker.Worker;
+import com.fezmlg.restaurant.worker.WorkerController;
 import com.fezmlg.staff.StaffController;
 import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
@@ -41,11 +43,18 @@ public class Main {
             mainMenu.goToMenu(moneyController.uiMainMenu());
         }, false));
         mainMenu.open();
+        start();
     }
 
     public static void loadDemo() {
         menu.load();
         orderController.load();
         staffController.load();
+    }
+
+    public static void start(){
+        WorkerController workerController = new WorkerController(orderController, staffController);
+        Thread thread = new Thread(workerController);
+        thread.start();
     }
 }

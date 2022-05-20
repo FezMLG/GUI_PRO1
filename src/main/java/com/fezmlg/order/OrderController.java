@@ -29,8 +29,8 @@ public class OrderController {
 
         uiMenu.addOption(1, new UIMenuOption("Show orders and manage items", () -> uiMenu.goToMenu(this.getOrderItems()), false));
         uiMenu.addOption(2, new UIMenuOption("Initialize new order", this::orderMaker, false));
-        uiMenu.addOption(3, new UIMenuOption("Save orders to file", this::save, false));
-        uiMenu.addOption(4, new UIMenuOption("Load orders from file", this::load, false));
+//        uiMenu.addOption(3, new UIMenuOption("Save orders to file", this::save, false));
+//        uiMenu.addOption(4, new UIMenuOption("Load orders from file", this::load, false));
         uiMenu.addOption(5, new UIMenuOption("Add random order", this::addRandomOrder, false));
         uiMenu.addOption(6, new UIMenuOption("Show waiting orders", () -> uiMenu.goToMenu(this.getOrderItems(OrderStatus.WAITING)), false));
 
@@ -73,6 +73,7 @@ public class OrderController {
         }
         uiMenu.addOption(i + 1, new UIMenuOption("Add item to order", () -> uiMenu.goToMenu(this.modifyItemList(true, order)), true));
         uiMenu.addOption(i + 2, new UIMenuOption("Remove item from order", () -> uiMenu.goToMenu(this.modifyItemList(false, order)), true));
+        uiMenu.addOption(i + 2, new UIMenuOption("Set order to waiting", () -> order.setOrderStatus(OrderStatus.WAITING), true));
         return uiMenu;
     }
 

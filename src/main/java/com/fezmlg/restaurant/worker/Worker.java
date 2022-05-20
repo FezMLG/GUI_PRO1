@@ -1,17 +1,33 @@
 package com.fezmlg.restaurant.worker;
 
+import com.fezmlg.order.Order;
+import com.fezmlg.order.OrderStatus;
+import com.fezmlg.staff.Staff;
+
 public class Worker implements Runnable {
-    public static void main(String[] args) {
-        Worker kitchen = new Worker();
-        Thread thread = new Thread(kitchen);
-        thread.start();
-        while (thread.isAlive()) {
-            System.out.println("Waiting...");
-        }
-        System.out.println("This code is outside of the thread");
+
+    private final Staff staff;
+    private final Order order;
+    private final OrderStatus orderStatus;
+    public Worker(Staff staff, Order order, OrderStatus orderStatus) {
+        this.order = order;
+        this.staff = staff;
+        this.orderStatus = orderStatus;
+//        while (thread.isAlive()) {
+//            System.out.println("Waiting...");
+//        }
+        System.out.println("Starting worker");
     }
 
     public void run() {
-        System.out.println("This code is running in a thread");
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        order.setOrderStatus(orderStatus);
+        staff.setAvailable(true);
+        System.out.println("Meal is prepared");
     }
+    
 }

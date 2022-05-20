@@ -8,6 +8,7 @@ public class Staff {
     protected StaffType staffType;
     protected Integer madeOrders;
     private double tips;
+    private boolean isAvailable;
 
     public Staff(Integer id, String name, String number, StaffType staffType) {
         this.id = id;
@@ -16,6 +17,7 @@ public class Staff {
         this.staffType = staffType;
         this.madeOrders = 0;
         this.tips = 0;
+        this.isAvailable = true;
     }
 
     public StaffType getStaffType() {
@@ -72,5 +74,13 @@ public class Staff {
 
     public void addTips(double tips) {
         this.tips += tips;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 }
