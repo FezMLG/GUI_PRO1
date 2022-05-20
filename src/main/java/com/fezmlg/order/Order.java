@@ -111,7 +111,7 @@ public class Order {
             randOrderType = OrderType.LOCAL;
             address = "Table 10";
         }
-        return new Order(orderController.getOrderList().size() + 1, randOrderType, address, OrderStatus.WAITING);
+        return new Order(orderController.getOrderList().size() + 1, randOrderType, address, OrderStatus.PLACED);
     }
 }
 

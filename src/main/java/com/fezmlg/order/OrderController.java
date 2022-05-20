@@ -83,6 +83,9 @@ public class OrderController {
         if (save) {
             for (MenuItem item :
                     menu.getMenuList()) {
+                if (!item.isAvailable()) {
+                    continue;
+                }
                 uiMenu.addOption(i, new UIMenuOption(uiMenu.multiLineBuilder(
                         "Name: " + item.getName(),
                         "Description: " + item.getDescription(),
