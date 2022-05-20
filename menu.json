@@ -4,6 +4,6 @@
     "name": "Name",
     "description": "desc",
     "price": 1.1,
-    "isAvailable": true
+    "isAvailable": false
   }
 ]
