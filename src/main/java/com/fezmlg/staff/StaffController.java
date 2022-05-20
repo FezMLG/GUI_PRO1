@@ -25,8 +25,6 @@ public class StaffController {
         UIMenu uiMenu = new UIMenu("Staff", false);
 
         uiMenu.addOption(1, new UIMenuOption("Show staff and manage it", () -> uiMenu.goToMenu(this.uiGetStaffMembers()), false));
-        uiMenu.addOption(2, new UIMenuOption("Save staff", this::save, false));
-        uiMenu.addOption(3, new UIMenuOption("Load staff", this::load, false));
         uiMenu.addOption(4, new UIMenuOption("Add staff member", this::staffMaker, false));
 
         return uiMenu;
