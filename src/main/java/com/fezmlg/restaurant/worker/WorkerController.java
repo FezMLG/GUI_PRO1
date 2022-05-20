@@ -10,8 +10,8 @@ import com.fezmlg.staff.StaffType;
 
 public class WorkerController extends Thread {
 
-    private OrderController orderController;
-    private StaffController staffController;
+    private final OrderController orderController;
+    private final StaffController staffController;
 
     public WorkerController(OrderController orderController, StaffController staffController) {
         this.orderController = orderController;
@@ -26,10 +26,6 @@ public class WorkerController extends Thread {
             Order orderToDeliver = null;
             try {
                 for (Order order : orderController.getOrderList()) {
-                    /*System.out.println(order.getOrderTime().compareTo(orderToMake.getOrderTime()));
-                    if (order.getOrderTime().compareTo(orderToMake.getOrderTime()) < 0 && order.getOrderStatus() == OrderStatus.WAITING) {
-                        orderToMake = order;
-                    }*/
                     if (order.getOrderStatus().equals(OrderStatus.WAITING)) {
                         if (orderToMake == null) {
                             orderToMake = order;
