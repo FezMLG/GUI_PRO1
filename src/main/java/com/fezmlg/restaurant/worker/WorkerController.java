@@ -16,7 +16,6 @@ public class WorkerController extends Thread {
     public WorkerController(OrderController orderController, StaffController staffController) {
         this.orderController = orderController;
         this.staffController = staffController;
-        System.out.println("Starting workerController");
     }
 
     @Override
@@ -24,24 +23,35 @@ public class WorkerController extends Thread {
         while (!isInterrupted()) {
             //Order dummyOrder = new Order();
             Order orderToMake = null;
+            Order orderToDeliver = null;
             try {
                 for (Order order : orderController.getOrderList()) {
                     /*System.out.println(order.getOrderTime().compareTo(orderToMake.getOrderTime()));
                     if (order.getOrderTime().compareTo(orderToMake.getOrderTime()) < 0 && order.getOrderStatus() == OrderStatus.WAITING) {
                         orderToMake = order;
                     }*/
-                    if (!order.getOrderStatus().equals(OrderStatus.WAITING)) {
-                        continue;
-                    }
-
-                    if (orderToMake == null) {
-                        orderToMake = order;
-                    } else {
-                        if (orderToMake.getOrderType().equals(OrderType.ONLINE)) {
+                    if (order.getOrderStatus().equals(OrderStatus.WAITING)) {
+                        if (orderToMake == null) {
                             orderToMake = order;
                         } else {
-                            if (order.getOrderTime().compareTo(orderToMake.getOrderTime()) < 0) {
+                            if (orderToMake.getOrderType().equals(OrderType.ONLINE)) {
                                 orderToMake = order;
+                            } else {
+                                if (order.getOrderTime().compareTo(orderToMake.getOrderTime()) < 0) {
+                                    orderToMake = order;
+                                }
+                            }
+                        }
+                    }
+
+                    if (order.getOrderStatus().equals(OrderStatus.READY)) {
+                        if (orderToDeliver == null) {
+                            orderToDeliver = order;
+                        } else {
+                            if (orderToDeliver.getOrderType().equals(OrderType.ONLINE)) {
+                                orderToDeliver = order;
+                            } else if (orderToDeliver.getOrderType().equals(OrderType.LOCAL)) {
+                                orderToDeliver = order;
                             }
                         }
                     }
@@ -51,14 +61,34 @@ public class WorkerController extends Thread {
                         if (staff.getStaffType() == StaffType.COOK && staff.isAvailable()) {
                             staff.setAvailable(false);
                             orderToMake.setOrderStatus(OrderStatus.IN_PROGRESS);
-                            Worker worker = new Worker(staff, orderToMake, OrderStatus.READY);
+                            Worker worker = new Worker(staff, orderToMake, OrderStatus.READY, 5000);
                             Thread thread = new Thread(worker);
                             thread.start();
                             break;
                         }
                     }
                 }
-                sleep(1000);
+
+                if (orderToDeliver != null) {
+                    for (Staff staff : staffController.getStaffArrayList()) {
+                        if (staff.getStaffType() == StaffType.DELIVERY && staff.isAvailable()) {
+                            staff.setAvailable(false);
+                            orderToDeliver.setOrderStatus(OrderStatus.IN_DELIVERY);
+                            Worker worker = new Worker(staff, orderToDeliver, OrderStatus.COMPLETED, 500);
+                            Thread thread = new Thread(worker);
+                            thread.start();
+                            break;
+                        } else if (staff.getStaffType() == StaffType.WAITER && staff.isAvailable()) {
+                            staff.setAvailable(false);
+                            orderToDeliver.setOrderStatus(OrderStatus.IN_DELIVERY);
+                            Worker worker = new Worker(staff, orderToDeliver, OrderStatus.COMPLETED, 100);
+                            Thread thread = new Thread(worker);
+                            thread.start();
+                            break;
+                        }
+                    }
+                }
+                sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

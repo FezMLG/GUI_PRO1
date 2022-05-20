@@ -19,8 +19,8 @@ public class Main {
     public static void main(String[] args) {
         menu = new Menu();
         orderController = new OrderController();
-        moneyController = new MoneyController(orderController);
         staffController = new StaffController();
+        moneyController = new MoneyController(orderController, staffController);
         loadDemo();
         orderController.setMenu(menu);
         start();
