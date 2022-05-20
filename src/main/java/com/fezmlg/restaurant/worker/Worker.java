@@ -17,7 +17,6 @@ public class Worker implements Runnable {
 //        while (thread.isAlive()) {
 //            System.out.println("Waiting...");
 //        }
-        System.out.println("Starting worker");
     }
 
     public void run() {
@@ -28,7 +27,6 @@ public class Worker implements Runnable {
         }
         order.setOrderStatus(orderStatus);
         staff.setAvailable(true);
-        System.out.println("Meal is prepared");
     }
 
 }
