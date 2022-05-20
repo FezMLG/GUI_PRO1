@@ -41,7 +41,7 @@ public class OrderController {
         UIMenu uiMenu = new UIMenu("Order List", false);
         int i = 1;
         for (Order item : orderList) {
-            uiMenu.addOption(i, new UIMenuOption(item.getId() + " " + item.getOrderType() + " " + item.getAddress(), () -> uiMenu.goToMenu(this.getOrderItem(item)), false));
+            uiMenu.addOption(i, new UIMenuOption(item.getId() + " " + item.getOrderType() + " " + item.getAddress() + " " + item.getOrderStatus(), () -> uiMenu.goToMenu(this.getOrderItem(item)), false));
             i++;
         }
 
@@ -53,7 +53,7 @@ public class OrderController {
         ArrayList<Order> orderList = this.filterByStatus(status);
         int i = 1;
         for (Order item : orderList) {
-            uiMenu.addOption(i, new UIMenuOption(item.getId() + " " + item.getOrderType() + " " + item.getAddress(), () -> uiMenu.goToMenu(this.getOrderItem(item)), false));
+            uiMenu.addOption(i, new UIMenuOption(item.getId() + " " + item.getOrderType() + " " + item.getAddress() + " " + item.getOrderStatus(), () -> uiMenu.goToMenu(this.getOrderItem(item)), false));
             i++;
         }
         return uiMenu;

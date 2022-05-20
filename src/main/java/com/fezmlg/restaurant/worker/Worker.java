@@ -9,6 +9,7 @@ public class Worker implements Runnable {
     private final Staff staff;
     private final Order order;
     private final OrderStatus orderStatus;
+
     public Worker(Staff staff, Order order, OrderStatus orderStatus) {
         this.order = order;
         this.staff = staff;
@@ -21,7 +22,7 @@ public class Worker implements Runnable {
 
     public void run() {
         try {
-            Thread.sleep(15000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -29,5 +30,5 @@ public class Worker implements Runnable {
         staff.setAvailable(true);
         System.out.println("Meal is prepared");
     }
-    
+
 }

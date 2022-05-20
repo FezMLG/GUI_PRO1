@@ -34,7 +34,7 @@
         "isAvailable": true
       }
     ],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 2,
@@ -50,7 +50,7 @@
         "isAvailable": true
       }
     ],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 3,
@@ -58,7 +58,7 @@
     "address": "Table 3",
     "orderTime": "2022-05-20T20:29:12.008672",
     "orderItems": [],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 4,
@@ -88,7 +88,7 @@
         "isAvailable": true
       }
     ],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 5,
@@ -118,7 +118,7 @@
         "isAvailable": true
       }
     ],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 6,
@@ -148,7 +148,7 @@
         "isAvailable": true
       }
     ],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 7,
@@ -199,7 +199,7 @@
         "isAvailable": true
       }
     ],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 8,
@@ -236,7 +236,7 @@
         "isAvailable": true
       }
     ],
-    "orderStatus": "PLACED"
+    "orderStatus": "WAITING"
   },
   {
     "id": 9,
