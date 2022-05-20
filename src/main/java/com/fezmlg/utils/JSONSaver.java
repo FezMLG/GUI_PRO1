@@ -32,7 +32,6 @@ public class JSONSaver {
             gson.toJson(toSave, writer);
             writer.flush();
             writer.close();
-            new Logger(toSave + "object was saved to file" + filename);
         } catch (IOException e) {
             new Logger("Failed to save to file " + e);
         }
