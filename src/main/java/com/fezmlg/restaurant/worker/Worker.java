@@ -1,4 +1,4 @@
-package com.fezmlg.restaurant.kitchen;
+package com.fezmlg.restaurant.worker;
 
 public class Worker implements Runnable {
     public static void main(String[] args) {

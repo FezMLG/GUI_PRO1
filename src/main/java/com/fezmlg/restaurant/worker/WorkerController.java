@@ -1,4 +1,4 @@
-package com.fezmlg.restaurant.kitchen;
+package com.fezmlg.restaurant.worker;
 
 public class WorkerController {
 
