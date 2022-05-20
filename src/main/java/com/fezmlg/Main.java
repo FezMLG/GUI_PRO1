@@ -3,6 +3,7 @@ package com.fezmlg;
 import com.fezmlg.menu.MenuController;
 import com.fezmlg.money.MoneyController;
 import com.fezmlg.order.OrderController;
+import com.fezmlg.utils.SaverWorker;
 import com.fezmlg.worker.WorkerController;
 import com.fezmlg.staff.StaffController;
 import com.fezmlg.ui.UIMenu;
@@ -41,9 +42,11 @@ public class Main {
     }
 
     public static void saveAll() {
-        orderController.save();
-        staffController.save();
-        menuController.save();
+//        orderController.save();
+//        staffController.save();
+//        menuController.save();
+        SaverWorker saverWorker = new SaverWorker(orderController, staffController, menuController);
+        saverWorker.start();
     }
 
     public static void start() {
