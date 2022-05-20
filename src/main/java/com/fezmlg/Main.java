@@ -1,9 +1,9 @@
 package com.fezmlg;
 
-import com.fezmlg.menu.Menu;
+import com.fezmlg.menu.MenuController;
 import com.fezmlg.money.MoneyController;
 import com.fezmlg.order.OrderController;
-import com.fezmlg.restaurant.worker.WorkerController;
+import com.fezmlg.worker.WorkerController;
 import com.fezmlg.staff.StaffController;
 import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
@@ -11,22 +11,22 @@ import com.fezmlg.ui.UIMenuOption;
 public class Main {
 
     private static UIMenu mainMenu;
-    private static Menu menu;
+    private static MenuController menuController;
     private static OrderController orderController;
     private static MoneyController moneyController;
     private static StaffController staffController;
 
     public static void main(String[] args) {
-        menu = new Menu();
+        menuController = new MenuController();
         orderController = new OrderController();
         staffController = new StaffController();
         moneyController = new MoneyController(orderController, staffController);
         loadDemo();
-        orderController.setMenu(menu);
+        orderController.setMenu(menuController);
         start();
         mainMenu = new UIMenu("Main Menu", true);
 
-        mainMenu.addOption(1, new UIMenuOption("Menu", () -> mainMenu.goToMenu(menu.uiMainMenu()), false));
+        mainMenu.addOption(1, new UIMenuOption("Menu", () -> mainMenu.goToMenu(menuController.uiMainMenu()), false));
         mainMenu.addOption(2, new UIMenuOption("Orders", () -> mainMenu.goToMenu(orderController.uiMainMenu()), false));
         mainMenu.addOption(3, new UIMenuOption("Staff", () -> mainMenu.goToMenu(staffController.uiMainMenu()), false));
         mainMenu.addOption(4, new UIMenuOption("Money", () -> mainMenu.goToMenu(moneyController.uiMainMenu()), false));
@@ -35,7 +35,7 @@ public class Main {
     }
 
     public static void loadDemo() {
-        menu.load();
+        menuController.load();
         orderController.load();
         staffController.load();
     }
@@ -43,7 +43,7 @@ public class Main {
     public static void saveAll() {
         orderController.save();
         staffController.save();
-        menu.save();
+        menuController.save();
     }
 
     public static void start() {

@@ -1,12 +1,10 @@
-package com.fezmlg.restaurant.worker;
+package com.fezmlg.worker;
 
 import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderStatus;
 import com.fezmlg.staff.Staff;
 import com.fezmlg.staff.StaffType;
 import com.fezmlg.utils.RandomNumber;
-
-import java.util.Random;
 
 public class Worker implements Runnable {
 
@@ -20,9 +18,6 @@ public class Worker implements Runnable {
         this.staff = staff;
         this.orderStatus = orderStatus;
         this.timeToSleep = timeToSleep;
-//        while (thread.isAlive()) {
-//            System.out.println("Waiting...");
-//        }
     }
 
     public void run() {
@@ -33,7 +28,7 @@ public class Worker implements Runnable {
         }
         if (staff.getStaffType() != StaffType.COOK) {
             RandomNumber randomNumber = new RandomNumber();
-            Double tipPercent = Double.valueOf(randomNumber.get(0, 10)) / 100;
+            double tipPercent = (double) randomNumber.get(0, 10) / 100;
             staff.addTips(order.countMoneyFromItems() * tipPercent);
         }
         order.setOrderStatus(orderStatus);

@@ -8,12 +8,12 @@ import com.fezmlg.utils.JSONSaver;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Menu {
+public class MenuController {
 
     private ArrayList<MenuItem> menuList = new ArrayList<>();
     private static UI ui;
 
-    public Menu() {
+    public MenuController() {
         ui = new UI();
     }
 
@@ -73,7 +73,7 @@ public class Menu {
         this.addToMenu(new MenuItem(menuList.size() + 1, name, desc, price, isAvailable));
     }
 
-    public Menu addToMenu(MenuItem... itemToAdd) {
+    public MenuController addToMenu(MenuItem... itemToAdd) {
         this.menuList.addAll(Arrays.asList(itemToAdd));
         return this;
     }

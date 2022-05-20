@@ -1,6 +1,6 @@
 package com.fezmlg.order;
 
-import com.fezmlg.menu.Menu;
+import com.fezmlg.menu.MenuController;
 import com.fezmlg.menu.MenuItem;
 import com.fezmlg.ui.UI;
 import com.fezmlg.ui.UIMenu;
@@ -15,15 +15,15 @@ import java.util.ArrayList;
 public class OrderController {
     private final UI ui;
     private ArrayList<Order> orderList;
-    private Menu menu;
+    private MenuController menuController;
 
     public OrderController() {
         ui = new UI();
         orderList = new ArrayList<>();
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setMenu(MenuController menuController) {
+        this.menuController = menuController;
     }
 
     public UIMenu uiMainMenu() {
@@ -82,7 +82,7 @@ public class OrderController {
         int i = 1;
         if (save) {
             for (MenuItem item :
-                    menu.getMenuList()) {
+                    menuController.getMenuList()) {
                 if (!item.isAvailable()) {
                     continue;
                 }

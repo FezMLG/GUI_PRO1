@@ -1,4 +1,4 @@
-package com.fezmlg.restaurant.worker;
+package com.fezmlg.worker;
 
 import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderController;

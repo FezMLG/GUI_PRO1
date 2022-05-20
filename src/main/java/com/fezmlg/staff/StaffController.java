@@ -1,8 +1,5 @@
 package com.fezmlg.staff;
 
-import com.fezmlg.order.Order;
-import com.fezmlg.order.OrderStatus;
-import com.fezmlg.order.OrderType;
 import com.fezmlg.staff.cook.Cook;
 import com.fezmlg.staff.delivery.Delivery;
 import com.fezmlg.staff.waiter.Waiter;
@@ -17,10 +14,11 @@ import java.util.List;
 public class StaffController {
 
     private ArrayList<Staff> staffArrayList;
-    private UI ui = new UI();
+    private final UI ui;
 
     public StaffController() {
         this.staffArrayList = new ArrayList<>();
+        ui = new UI();
     }
 
     public UIMenu uiMainMenu() {
@@ -85,7 +83,7 @@ public class StaffController {
         }
     }
 
-    private void removeStaffMember(Staff staff) throws Exception {
+    private void removeStaffMember(Staff staff) {
         this.staffArrayList.removeIf(n -> n == staff);
         ArrayList<Staff> localCopy = this.staffArrayList;
         localCopy.removeIf(n -> n.getStaffType() != staff.getStaffType());
