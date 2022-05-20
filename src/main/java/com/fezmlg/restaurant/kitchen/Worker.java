@@ -1,10 +1,8 @@
 package com.fezmlg.restaurant.kitchen;
 
-import java.util.concurrent.TimeUnit;
-
-public class Kitchen implements Runnable {
+public class Worker implements Runnable {
     public static void main(String[] args) {
-        Kitchen kitchen = new Kitchen();
+        Worker kitchen = new Worker();
         Thread thread = new Thread(kitchen);
         thread.start();
         while (thread.isAlive()) {
