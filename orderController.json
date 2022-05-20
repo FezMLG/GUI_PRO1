@@ -4,15 +4,7 @@
     "orderType": "LOCAL",
     "address": "Table 1",
     "orderTime": "2022-05-20T20:17:35.798167",
-    "orderItems": [
-      {
-        "id": 1,
-        "name": "Name",
-        "description": "desc",
-        "price": 1.1,
-        "isAvailable": true
-      }
-    ],
+    "orderItems": [],
     "orderStatus": "PLACED"
   }
 ]
