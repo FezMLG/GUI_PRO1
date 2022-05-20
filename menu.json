@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Watercress Sandwich",
-    "description": "Poor Man's Bread",
+    "description": "Poor Man\u0027s Bread",
     "price": 1.1,
     "isAvailable": true
   },
@@ -10,7 +10,7 @@
     "id": 2,
     "name": "Flan",
     "description": "Crème caramel, flan, caramel pudding or caramel custard is a custard dessert with a layer of clear caramel sauce.",
-    "price": 10.50,
+    "price": 10.5,
     "isAvailable": true
   },
   {
@@ -23,7 +23,7 @@
   {
     "id": 4,
     "name": "Baked Potato Soup",
-    "description": "Potato's",
+    "description": "Potato\u0027s",
     "price": 12.23,
     "isAvailable": true
   },
@@ -46,6 +46,13 @@
     "name": "Wine",
     "description": "Just some fermented grapes.",
     "price": 69.96,
+    "isAvailable": true
+  },
+  {
+    "id": 8,
+    "name": "Water",
+    "description": "Only wine",
+    "price": 1,
     "isAvailable": false
   }
 ]

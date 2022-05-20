@@ -21,7 +21,6 @@
     "id": 3,
     "name": "Jason Waiting",
     "number": "12345689",
-    "staffType": "Waiter",
     "madeOrders": 0,
     "tips": 0.0,
     "isAvailable": true
