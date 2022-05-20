@@ -114,6 +114,7 @@ public class Menu {
 //    }
 
     public void setMenuList(ArrayList<MenuItem> menuList) {
+        if (menuList == null) return;
         this.menuList = menuList;
     }
 

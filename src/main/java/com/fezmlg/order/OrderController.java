@@ -151,6 +151,7 @@ public class OrderController {
     }
 
     public void setOrderList(ArrayList<Order> orderList) {
+        if (orderList == null) return;
         this.orderList = orderList;
     }
 

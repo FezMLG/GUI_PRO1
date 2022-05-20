@@ -28,6 +28,7 @@ public class Main {
         staffController = new StaffController();
         loadDemo();
         orderController.setMenu(menu);
+        start();
         mainMenu = new UIMenu("Main Menu", true);
 
         mainMenu.addOption(1, new UIMenuOption("Menu", () -> {
@@ -42,8 +43,8 @@ public class Main {
         mainMenu.addOption(4, new UIMenuOption("Money", () -> {
             mainMenu.goToMenu(moneyController.uiMainMenu());
         }, false));
+        mainMenu.addOption(5, new UIMenuOption("Save all", Main::saveAll, false));
         mainMenu.open();
-        start();
     }
 
     public static void loadDemo() {
@@ -52,7 +53,13 @@ public class Main {
         staffController.load();
     }
 
-    public static void start(){
+    public static void saveAll() {
+        orderController.save();
+        staffController.save();
+        menu.save();
+    }
+
+    public static void start() {
         WorkerController workerController = new WorkerController(orderController, staffController);
         Thread thread = new Thread(workerController);
         thread.start();

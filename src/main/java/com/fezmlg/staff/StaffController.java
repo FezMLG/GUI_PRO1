@@ -103,6 +103,7 @@ public class StaffController {
     }
 
     public int generateID() {
+        if (staffArrayList == null) return 1;
         return this.staffArrayList.size() + 1;
     }
 
@@ -128,6 +129,7 @@ public class StaffController {
     }
 
     public void setStaffArrayList(ArrayList<Staff> staffArrayList) {
+        if (staffArrayList == null) return;
         this.staffArrayList = staffArrayList;
     }
 }
