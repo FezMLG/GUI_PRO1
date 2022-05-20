@@ -26,18 +26,10 @@ public class Main {
         start();
         mainMenu = new UIMenu("Main Menu", true);
 
-        mainMenu.addOption(1, new UIMenuOption("Menu", () -> {
-            mainMenu.goToMenu(menu.uiMainMenu());
-        }, false));
-        mainMenu.addOption(2, new UIMenuOption("Orders", () -> {
-            mainMenu.goToMenu(orderController.uiMainMenu());
-        }, false));
-        mainMenu.addOption(3, new UIMenuOption("Staff", () -> {
-            mainMenu.goToMenu(staffController.uiMainMenu());
-        }, false));
-        mainMenu.addOption(4, new UIMenuOption("Money", () -> {
-            mainMenu.goToMenu(moneyController.uiMainMenu());
-        }, false));
+        mainMenu.addOption(1, new UIMenuOption("Menu", () -> mainMenu.goToMenu(menu.uiMainMenu()), false));
+        mainMenu.addOption(2, new UIMenuOption("Orders", () -> mainMenu.goToMenu(orderController.uiMainMenu()), false));
+        mainMenu.addOption(3, new UIMenuOption("Staff", () -> mainMenu.goToMenu(staffController.uiMainMenu()), false));
+        mainMenu.addOption(4, new UIMenuOption("Money", () -> mainMenu.goToMenu(moneyController.uiMainMenu()), false));
         mainMenu.addOption(5, new UIMenuOption("Save all", Main::saveAll, false));
         mainMenu.open();
     }
@@ -55,9 +47,6 @@ public class Main {
     }
 
     public static void start() {
-        /*WorkerController workerController = new WorkerController(orderController, staffController);
-        Thread thread = new Thread(workerController);
-        thread.start();*/
         WorkerController workerController = new WorkerController(orderController, staffController);
         workerController.start();
     }
