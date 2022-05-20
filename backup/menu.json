@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Watercress Sandwich",
+    "description": "Poor Man\u0027s Bread",
+    "price": 1.1,
+    "isAvailable": true
+  },
+  {
+    "id": 2,
+    "name": "Flan",
+    "description": "Crème caramel, flan, caramel pudding or caramel custard is a custard dessert with a layer of clear caramel sauce.",
+    "price": 10.5,
+    "isAvailable": true
+  },
+  {
+    "id": 3,
+    "name": "Calamari",
+    "description": "Calamaris",
+    "price": 39.75,
+    "isAvailable": true
+  },
+  {
+    "id": 4,
+    "name": "Baked Potato Soup",
+    "description": "Potato\u0027s",
+    "price": 12.23,
+    "isAvailable": true
+  },
+  {
+    "id": 5,
+    "name": "Oysters Rockefeller",
+    "description": "BREAD",
+    "price": 5.23,
+    "isAvailable": true
+  },
+  {
+    "id": 6,
+    "name": "Sticky Toffee Pudding",
+    "description": "This is a classic British dessert made of soft and sweet date cakes soaked in a warm toffee sauce.",
+    "price": 16.89,
+    "isAvailable": true
+  },
+  {
+    "id": 7,
+    "name": "Wine",
+    "description": "Just some fermented grapes.",
+    "price": 69.96,
+    "isAvailable": true
+  },
+  {
+    "id": 8,
+    "name": "Water",
+    "description": "Only wine",
+    "price": 1,
+    "isAvailable": false
+  }
+]

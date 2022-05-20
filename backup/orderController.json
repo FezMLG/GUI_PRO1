@@ -1,0 +1,294 @@
+[
+  {
+    "id": 1,
+    "orderType": "LOCAL",
+    "address": "Table 1",
+    "orderTime": "2022-05-20T20:17:35.798167",
+    "orderItems": [
+      {
+        "id": 1,
+        "name": "Watercress Sandwich",
+        "description": "Poor Man\u0027s Bread",
+        "price": 1.1,
+        "isAvailable": true
+      },
+      {
+        "id": 5,
+        "name": "Oysters Rockefeller",
+        "description": "BREAD",
+        "price": 5.23,
+        "isAvailable": true
+      },
+      {
+        "id": 2,
+        "name": "Flan",
+        "description": "Crème caramel, flan, caramel pudding or caramel custard is a custard dessert with a layer of clear caramel sauce.",
+        "price": 10.5,
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Calamari",
+        "description": "Calamaris",
+        "price": 39.75,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 2,
+    "orderType": "LOCAL",
+    "address": "Table 2",
+    "orderTime": "2022-05-20T20:29:06.673686",
+    "orderItems": [
+      {
+        "id": 4,
+        "name": "Baked Potato Soup",
+        "description": "Potato\u0027s",
+        "price": 12.23,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 3,
+    "orderType": "LOCAL",
+    "address": "Table 3",
+    "orderTime": "2022-05-20T20:29:12.008672",
+    "orderItems": [],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 4,
+    "orderType": "LOCAL",
+    "address": "Table 4",
+    "orderTime": "2022-05-20T20:29:16.133493",
+    "orderItems": [
+      {
+        "id": 1,
+        "name": "Watercress Sandwich",
+        "description": "Poor Man\u0027s Bread",
+        "price": 1.1,
+        "isAvailable": true
+      },
+      {
+        "id": 4,
+        "name": "Baked Potato Soup",
+        "description": "Potato\u0027s",
+        "price": 12.23,
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Calamari",
+        "description": "Calamaris",
+        "price": 39.75,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 5,
+    "orderType": "LOCAL",
+    "address": "Table 5",
+    "orderTime": "2022-05-20T20:29:20.26355",
+    "orderItems": [
+      {
+        "id": 5,
+        "name": "Oysters Rockefeller",
+        "description": "BREAD",
+        "price": 5.23,
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Calamari",
+        "description": "Calamaris",
+        "price": 39.75,
+        "isAvailable": true
+      },
+      {
+        "id": 4,
+        "name": "Baked Potato Soup",
+        "description": "Potato\u0027s",
+        "price": 12.23,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 6,
+    "orderType": "LOCAL",
+    "address": "Table 6",
+    "orderTime": "2022-05-20T20:29:23.983789",
+    "orderItems": [
+      {
+        "id": 1,
+        "name": "Watercress Sandwich",
+        "description": "Poor Man\u0027s Bread",
+        "price": 1.1,
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Calamari",
+        "description": "Calamaris",
+        "price": 39.75,
+        "isAvailable": true
+      },
+      {
+        "id": 2,
+        "name": "Flan",
+        "description": "Crème caramel, flan, caramel pudding or caramel custard is a custard dessert with a layer of clear caramel sauce.",
+        "price": 10.5,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 7,
+    "orderType": "ONLINE",
+    "address": "Drzewna 1",
+    "orderTime": "2022-05-20T20:29:42.919078",
+    "orderItems": [
+      {
+        "id": 4,
+        "name": "Baked Potato Soup",
+        "description": "Potato\u0027s",
+        "price": 12.23,
+        "isAvailable": true
+      },
+      {
+        "id": 2,
+        "name": "Flan",
+        "description": "Crème caramel, flan, caramel pudding or caramel custard is a custard dessert with a layer of clear caramel sauce.",
+        "price": 10.5,
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Calamari",
+        "description": "Calamaris",
+        "price": 39.75,
+        "isAvailable": true
+      },
+      {
+        "id": 1,
+        "name": "Watercress Sandwich",
+        "description": "Poor Man\u0027s Bread",
+        "price": 1.1,
+        "isAvailable": true
+      },
+      {
+        "id": 2,
+        "name": "Flan",
+        "description": "Crème caramel, flan, caramel pudding or caramel custard is a custard dessert with a layer of clear caramel sauce.",
+        "price": 10.5,
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Calamari",
+        "description": "Calamaris",
+        "price": 39.75,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 8,
+    "orderType": "ONLINE",
+    "address": "Panna 4",
+    "orderTime": "2022-05-20T20:29:50.125911",
+    "orderItems": [
+      {
+        "id": 4,
+        "name": "Baked Potato Soup",
+        "description": "Potato\u0027s",
+        "price": 12.23,
+        "isAvailable": true
+      },
+      {
+        "id": 3,
+        "name": "Calamari",
+        "description": "Calamaris",
+        "price": 39.75,
+        "isAvailable": true
+      },
+      {
+        "id": 2,
+        "name": "Flan",
+        "description": "Crème caramel, flan, caramel pudding or caramel custard is a custard dessert with a layer of clear caramel sauce.",
+        "price": 10.5,
+        "isAvailable": true
+      },
+      {
+        "id": 1,
+        "name": "Watercress Sandwich",
+        "description": "Poor Man\u0027s Bread",
+        "price": 1.1,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 9,
+    "orderType": "LOCAL",
+    "address": "Table 10",
+    "orderTime": "2022-05-20T20:29:52.239616",
+    "orderItems": [
+      {
+        "id": 1,
+        "name": "Watercress Sandwich",
+        "description": "Poor Man\u0027s Bread",
+        "price": 1.1,
+        "isAvailable": true
+      },
+      {
+        "id": 4,
+        "name": "Baked Potato Soup",
+        "description": "Potato\u0027s",
+        "price": 12.23,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  },
+  {
+    "id": 10,
+    "orderType": "ONLINE",
+    "address": "Pani 91",
+    "orderTime": "2022-05-20T20:30:04.219402",
+    "orderItems": [
+      {
+        "id": 1,
+        "name": "Watercress Sandwich",
+        "description": "Poor Man\u0027s Bread",
+        "price": 1.1,
+        "isAvailable": true
+      },
+      {
+        "id": 6,
+        "name": "Sticky Toffee Pudding",
+        "description": "This is a classic British dessert made of soft and sweet date cakes soaked in a warm toffee sauce.",
+        "price": 16.89,
+        "isAvailable": true
+      },
+      {
+        "id": 7,
+        "name": "Wine",
+        "description": "Just some fermented grapes.",
+        "price": 69.96,
+        "isAvailable": true
+      }
+    ],
+    "orderStatus": "PLACED"
+  }
+]

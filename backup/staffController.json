@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Robert Cooking",
+    "number": "12345689",
+    "staffType": "COOK",
+    "madeOrders": 0,
+    "tips": 0.0,
+    "isAvailable": true
+  },
+  {
+    "id": 2,
+    "name": "Jon Cooker",
+    "number": "12345689",
+    "staffType": "COOK",
+    "madeOrders": 0,
+    "tips": 0.0,
+    "isAvailable": true
+  },
+  {
+    "id": 3,
+    "name": "Jason Waiting",
+    "number": "12345689",
+    "madeOrders": 0,
+    "tips": 0.0,
+    "isAvailable": true
+  },
+  {
+    "id": 4,
+    "name": "Sam Brum",
+    "number": "12345689",
+    "staffType": "DELIVERY",
+    "madeOrders": 0,
+    "tips": 0.0,
+    "isAvailable": true
+  }
+]
