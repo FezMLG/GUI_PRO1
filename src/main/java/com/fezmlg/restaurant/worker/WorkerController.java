@@ -3,15 +3,12 @@ package com.fezmlg.restaurant.worker;
 import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderController;
 import com.fezmlg.order.OrderStatus;
+import com.fezmlg.order.OrderType;
 import com.fezmlg.staff.Staff;
 import com.fezmlg.staff.StaffController;
 import com.fezmlg.staff.StaffType;
-import com.fezmlg.staff.cook.Cook;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-public class WorkerController implements Runnable {
+public class WorkerController extends Thread {
 
     private OrderController orderController;
     private StaffController staffController;
@@ -22,6 +19,7 @@ public class WorkerController implements Runnable {
         System.out.println("Starting workerController");
     }
 
+    @Override
     public void run() {
         while (!isInterrupted()) {
             //Order dummyOrder = new Order();

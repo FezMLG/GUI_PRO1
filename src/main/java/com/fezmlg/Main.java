@@ -1,13 +1,8 @@
 package com.fezmlg;
 
 import com.fezmlg.menu.Menu;
-import com.fezmlg.menu.MenuItem;
 import com.fezmlg.money.MoneyController;
-import com.fezmlg.order.Order;
 import com.fezmlg.order.OrderController;
-import com.fezmlg.order.OrderStatus;
-import com.fezmlg.order.OrderType;
-import com.fezmlg.restaurant.worker.Worker;
 import com.fezmlg.restaurant.worker.WorkerController;
 import com.fezmlg.staff.StaffController;
 import com.fezmlg.ui.UIMenu;
@@ -60,8 +55,10 @@ public class Main {
     }
 
     public static void start() {
-        WorkerController workerController = new WorkerController(orderController, staffController);
+        /*WorkerController workerController = new WorkerController(orderController, staffController);
         Thread thread = new Thread(workerController);
-        thread.start();
+        thread.start();*/
+        WorkerController workerController = new WorkerController(orderController, staffController);
+        workerController.start();
     }
 }

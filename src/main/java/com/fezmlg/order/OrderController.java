@@ -13,11 +13,13 @@ import java.util.Date;
 import java.util.ArrayList;
 
 public class OrderController {
-    private static final UI ui = new UI();
-    private ArrayList<Order> orderList = new ArrayList<>();
+    private final UI ui;
+    private ArrayList<Order> orderList;
     private Menu menu;
 
     public OrderController() {
+        ui = new UI();
+        orderList = new ArrayList<>();
     }
 
     public void setMenu(Menu menu) {
