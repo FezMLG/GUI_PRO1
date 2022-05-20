@@ -21,8 +21,6 @@ public class Menu {
         UIMenu uiMenu = new UIMenu("Menu", true);
         uiMenu.addOption(1, new UIMenuOption("Show and Manage Items in Menu", () -> uiMenu.goToMenu(this.getMenuItems()), false));
         uiMenu.addOption(2, new UIMenuOption("Add item to menu", this::itemMaker, false));
-        uiMenu.addOption(3, new UIMenuOption("Save menu", this::save, false));
-        uiMenu.addOption(4, new UIMenuOption("Load menu", this::load, false));
         return uiMenu;
     }
 

@@ -31,8 +31,6 @@ public class OrderController {
 
         uiMenu.addOption(1, new UIMenuOption("Show orders and manage items", () -> uiMenu.goToMenu(this.getOrderItems()), false));
         uiMenu.addOption(2, new UIMenuOption("Initialize new order", this::orderMaker, false));
-//        uiMenu.addOption(3, new UIMenuOption("Save orders to file", this::save, false));
-//        uiMenu.addOption(4, new UIMenuOption("Load orders from file", this::load, false));
         uiMenu.addOption(5, new UIMenuOption("Add random order", this::addRandomOrder, false));
         uiMenu.addOption(6, new UIMenuOption("Show waiting orders", () -> uiMenu.goToMenu(this.getOrderItems(OrderStatus.WAITING)), false));
 
@@ -107,14 +105,6 @@ public class OrderController {
             }
         }
         return uiMenu;
-    }
-
-    private void itemPrinter(MenuItem item) {
-        ui.println("ID: " + String.valueOf(item.getId()));
-        ui.println("Name: " + item.getName());
-        ui.println("Description: " + item.getDescription());
-        ui.println("Price: " + String.valueOf(item.getPrice()));
-        ui.listenForInput();
     }
 
     private void orderMaker() {
