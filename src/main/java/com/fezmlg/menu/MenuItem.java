@@ -1,12 +1,8 @@
 package com.fezmlg.menu;
 
-import com.fezmlg.utils.IDGenerator;
-
-import java.util.UUID;
-
 public class MenuItem {
 
-    private int id;
+    private final int id;
     private String name;
     private String description;
     private double price;
