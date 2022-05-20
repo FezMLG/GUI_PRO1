@@ -1,6 +1,5 @@
 package com.fezmlg.menu;
 
-import com.fezmlg.order.Order;
 import com.fezmlg.ui.UI;
 import com.fezmlg.ui.UIMenu;
 import com.fezmlg.ui.UIMenuOption;
@@ -12,18 +11,16 @@ import java.util.Arrays;
 public class Menu {
 
     private ArrayList<MenuItem> menuList = new ArrayList<>();
-    private static UI ui = new UI();
+    private static UI ui;
 
     public Menu() {
+        ui = new UI();
     }
 
     public UIMenu uiMainMenu() {
         UIMenu uiMenu = new UIMenu("Menu", true);
-
-        uiMenu.addOption(1, new UIMenuOption("Show and Manage Items in Menu", () -> {
-            uiMenu.goToMenu(this.getMenuItems());
-        }, false));
-        uiMenu.addOption(2, new UIMenuOption("Add item to menu", () -> this.itemMaker(), false));
+        uiMenu.addOption(1, new UIMenuOption("Show and Manage Items in Menu", () -> uiMenu.goToMenu(this.getMenuItems()), false));
+        uiMenu.addOption(2, new UIMenuOption("Add item to menu", this::itemMaker, false));
         uiMenu.addOption(3, new UIMenuOption("Save menu", this::save, false));
         uiMenu.addOption(4, new UIMenuOption("Load menu", this::load, false));
         return uiMenu;
@@ -34,10 +31,7 @@ public class Menu {
 
         int i = 1;
         for (MenuItem menuItem : menuList) {
-            uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> {
-                uiMenu.goToMenu(this.getMenuItem(menuItem));
-            }, true));
-//            System.out.println(menuItem.getName() + " " + menuItem.getDescription());
+            uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> uiMenu.goToMenu(this.getMenuItem(menuItem)), true));
             i++;
         }
 
@@ -66,18 +60,6 @@ public class Menu {
         item.setAvailable(isAvailable);
     }
 
-//    public UIMenu getMenuList(){
-//        UIMenu uiMenu = new UIMenu("Menu List", false);
-//
-//        int i = 1;
-//        for(MenuItem menuItem : menuList){
-//            uiMenu.addOption(i, new UIMenuOption(menuItem.getName(), () -> System.out.println(menuItem.getName() + " " + menuItem.getDescription()), true));
-//            i++;
-//        }
-//
-//        return uiMenu;
-//    }
-
     private void itemMaker() {
         ui.println("Product name:");
         String name = ui.listenForInput();
@@ -98,20 +80,16 @@ public class Menu {
         return this;
     }
 
-    public Menu removeItem(MenuItem... itemToRemove) {
+    public void removeItem(MenuItem... itemToRemove) {
         for (int i = 0; i < itemToRemove.length; i++) {
             int finalI = i;
             this.menuList.removeIf(n -> n.getId() == itemToRemove[finalI].getId());
         }
-        return this;
     }
 
     public ArrayList<MenuItem> getMenuList() {
         return menuList;
     }
-//    public ArrayList<MenuItem> getMenuList() {
-//        return menuList;
-//    }
 
     public void setMenuList(ArrayList<MenuItem> menuList) {
         if (menuList == null) return;

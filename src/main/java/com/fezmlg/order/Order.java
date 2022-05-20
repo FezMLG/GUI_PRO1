@@ -1,14 +1,11 @@
 package com.fezmlg.order;
 
 import com.fezmlg.menu.MenuItem;
-import com.fezmlg.utils.IDGenerator;
 import com.fezmlg.utils.RandomNumber;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.UUID;
-
 
 public class Order {
 
